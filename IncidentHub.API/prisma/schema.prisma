@@ -1,0 +1,46 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Incident {
+  id          String           @id @default(uuid())
+  title       String
+  description String
+  service     String
+  severity    IncidentSeverity
+  status      IncidentStatus   @default(open)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  deletedAt   DateTime?
+
+  auditLogs   AuditLog[]
+}
+
+enum IncidentSeverity {
+  low
+  medium
+  high
+  critical
+}
+
+enum IncidentStatus {
+  open
+  investigating
+  resolved
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  incidentId String
+  action     String
+  oldValue   Json?
+  newValue   Json?
+  createdAt  DateTime @default(now())
+
+  incident Incident @relation(fields: [incidentId], references: [id])
+}

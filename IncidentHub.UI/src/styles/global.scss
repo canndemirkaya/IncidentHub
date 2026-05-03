@@ -1,0 +1,180 @@
+/* Global variables and base styles */
+$primary-color: #1890ff;
+$muted: #888;
+
+body {
+    background: #f0f2f5;
+}
+
+.app-layout {
+    min-height: 100vh;
+}
+
+.app-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+}
+
+.app-header .title {
+    color: #111;
+    margin: 0;
+}
+
+.app-content {
+    padding: 32px 24px;
+}
+
+/* Panel */
+.panel-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px;
+}
+
+.panel-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0f0f0;
+}
+
+.panel-card .ant-card-body {
+    padding: 24px;
+}
+
+/* Dashboard */
+.dashboard-connection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+}
+
+.summary-card {
+    cursor: pointer;
+    transition: box-shadow 200ms, transform 200ms;
+}
+
+.dashboard-row {
+    margin-bottom: 18px;
+    display: flex;
+    gap: 16px;
+}
+
+.summary-card {
+    display: flex;
+}
+
+.summary-card .ant-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 96px;
+    padding: 16px;
+    flex: 1;
+}
+
+.summary-card .summary-title {
+    margin-bottom: 6px;
+}
+
+.summary-card .summary-value {
+    font-size: 22px;
+}
+
+.summary-title {
+    font-size: 12px;
+    color: $muted;
+}
+
+.summary-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.clear-filter-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.incident-row-highlight {
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 200ms ease;
+}
+
+/* Audit log */
+.audit-section {
+    margin-top: 24px;
+}
+
+.audit-card {
+    margin-bottom: 8px;
+}
+
+.audit-meta {
+    font-size: 12px;
+    color: #666;
+}
+
+.audit-pre {
+    margin-top: 6px;
+}
+
+.audit-pre pre {
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.error-details {
+    max-height: 300px;
+    overflow: auto;
+    background: #f6f8fa;
+    padding: 12px;
+}
+
+/* DataGrid */
+.data-grid-container {
+    position: relative;
+    padding-bottom: 56px;
+}
+
+.data-grid-row {
+    margin-bottom: 12px;
+}
+
+.column-title {
+    font-weight: 600;
+}
+
+.column-filter {
+    margin-top: 6px;
+}
+
+.actions-row {
+    display: flex;
+    gap: 8px;
+}
+
+.search-input {
+    width: 260px;
+}
+
+.pagination-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+/* Reusable small utilities */
+.ml-8 {
+    margin-left: 8px;
+}

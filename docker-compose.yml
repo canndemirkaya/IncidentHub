@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: incidenthub
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  incidenthub-api:
+    build: ./IncidentHub.API
+    env_file: .env.example
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+    # PROD: Image kullanılacak şekilde yapılandırıldı.
+    # Eğer geliştirme sırasında kaynak kodu konteyner içine mount edip live-reload/ts-node-dev gibi
+    # araçlarla geliştirme yapmak isterseniz aşağıdaki iki satırın başındaki '#' işaretini kaldırın.
+    # (örnek: volume mount, host dosya değişiklikleri container içinde anında görünür)
+    # volumes:
+    #   - ./IncidentHub.API:/app
+
+  incidenthub-ui:
+    build: ./IncidentHub.UI
+    env_file: .env.example
+    ports:
+      - '5173:80'
+    depends_on:
+      - incidenthub-api
+
+volumes:
+  db-data:
